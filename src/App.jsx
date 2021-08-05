@@ -1,40 +1,32 @@
 import './styles.css';
-import axios from "axios";
-import { useState, useEffect } from 'react';
-import { useProductData } from './hooks/useProductData';
-import { ProductCard } from './components/ProductCard/ProductCard';
+import { Products } from './pages';
+import { Link, Route } from 'react-router-dom';
+
+const Home = () => {
+  return <h1>This is the Home Page</h1>;
+}
 
 function App() {
-  const [loading, setLoading] = useState(false);
-  const { products, setProducts } = useProductData();
   
-  useEffect(() => {
-    (async () => {
-      setLoading(true);
-      const res = await axios.get(
-        `${process.env.REACT_APP_API_ENDPOINT}/products`
-      );
-      setProducts(res.data.products);
-      setLoading(false);
-    })();
-    // eslint-disable-next-line
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="App">
-        <h1>Loading...</h1>
-      </div>
-    );
-  } 
   return (
     <div className="App">
-      <h1>This is the Home Page</h1>
-      <div className="product__list">
-        {products.map((product) => {
-          return <ProductCard key={product._id} product={product} />;
-        })}
-      </div>
+      <ul>
+        <li>
+          {" "}
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          {" "}
+          <Link to="/products">Products</Link>
+        </li>
+      </ul>
+
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route path="/products">
+        <Products />
+      </Route>
     </div>
   );
 }
