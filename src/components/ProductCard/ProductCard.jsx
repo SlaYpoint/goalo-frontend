@@ -1,30 +1,48 @@
+import { trimmer } from "../../utils";
+
 export const ProductCard = ({ product }) => {
     
     return (
-      <div className="product-card flex-col p-2 box-shadow bg-color-white cur-point">
-        <div className="">
-          <div className="flex-grow pos-rel">
+      <>
+        <div className="card-vertical default-container shadow-box">
+          <div className="img-container badge-container">
             <img
-              className="img-res"
+              className="img-res card-img product-card-img"
               src={product.imageUrl}
               alt={product.name}
               loading="lazy"
             />
-            {!product.inStock && (
-              <div className="pos-abs top h-full w-full flex center">
-                <div className="w-full text-bold p-2 color-3 bg-color-2">
-                  Out of stock!
-                </div>
-              </div>
-            )}
+            <span
+              style={{display : product.inStock ? "none" : "block"}}
+              className="badge">
+              sold out              
+            </span>
           </div>
-          <h3 className="card-heading m-1">{product.name}</h3>
+          <div className="text-container">
+            <div className="text-container-title">
+              <h6 className="product-title">
+                {trimmer(product.name)}
+                <button className="like-btn">
+                  {/* <span>like</span> */}
+                </button>
+              </h6>
+            </div>
+            <div className="text-container-desc">
+              <p className="flex-grow">
+                Rs.{product.discountPrice}
+                <span className="font-light font-striked">
+                  {' '}
+                  Rs.{product.price}
+                </span>
+              </p>
+            </div>
+            <div className="cta-container">
+              <button className="btn btn-icon btn-primary">
+                <span>Add to cart</span>
+              </button>
+            </div>
+          </div>
         </div>
-        <div className="card-price m-h-1">
-          <span className="price-discounted">{product.discountPrice}</span>
-          <span className="price-original">{product.price}</span>
-        </div>
-        <div className="flex center">Add to cart</div>
-      </div>
+      </>
     );
 }
