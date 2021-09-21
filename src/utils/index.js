@@ -1,0 +1,1 @@
+export { trimmer } from "./trimmer";
