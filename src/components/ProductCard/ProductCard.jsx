@@ -1,4 +1,4 @@
-import { trimmer } from "../../utils";
+import { trimmer } from "../../helpers";
 
 export const ProductCard = ({ product }) => {
     
