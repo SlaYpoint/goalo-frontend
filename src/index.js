@@ -1,19 +1,19 @@
-import React from 'react';
+import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
+
 import { BrowserRouter as Router } from 'react-router-dom';
+
 import App from './App';
-import {
-  ProductsProvider
-} from './contexts/ProductsContext';
+import { StateProvider } from './contexts';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ProductsProvider>
+  <StrictMode>
+    <StateProvider>
       <Router>
         <App />
       </Router>
-    </ProductsProvider>
-  </React.StrictMode>,
+    </StateProvider>
+  </StrictMode>,
   document.getElementById("root")
 );
 
