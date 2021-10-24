@@ -1,6 +1,8 @@
 import { useStateContext } from '../../../../../contexts';
-import { sortByList } from '../../../../../helpers';
+import { sortByList, DownSvg } from '../../../../../helpers';
 import { useState } from 'react';
+
+import './SortByDropDown.css';
 
 export const SortByDropDown = () => {
     const { dispatch } = useStateContext();
@@ -19,13 +21,15 @@ export const SortByDropDown = () => {
             <div className="drop-down">
                 <div className="drop-down-show">
                     <div className="drop-down-selected">
-                        Sort By : <b>{ selectedSort }</b>
+                        Sort by : <b>{selectedSort}</b>
                     </div>
+                    <div className="down-arrow">{<DownSvg />}</div>
                 </div>
-                <ul className="list">
+                <ul className="drop-down-list">
                     {sortByList.map((item) => (
                         <li
-                            style={{ backgroundColor: `${item === setSelectedSort ? "#F4F4F5" : ""}`}}
+                            className="drop-down-list-items"
+                            style={{ backgroundColor: `${item === selectedSort ? "#F4F4F5" : ""}`}}
                             onClick={() => updateSort(item)}
                             key={item}
                         >
