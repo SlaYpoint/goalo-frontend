@@ -1,7 +1,7 @@
 import { categories, brands } from '../../../../../helpers';
 import { useStateContext } from '../../../../../contexts';
 
-import './FiltersPanel.css';
+import "./FiltersPanel.css"
 
 export const FiltersPanel = () => {
     const { state, dispatch } = useStateContext();
