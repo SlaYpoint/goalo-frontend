@@ -10,7 +10,7 @@ export const Products = () => {
   const filteredData = getFilteredData(state, sortedData);
 
   return (
-    <div className="product__list">
+    <div className="products">
       {filteredData.map((product) => {
         return <ProductCard key={product._id} product={product} />;
       })}
